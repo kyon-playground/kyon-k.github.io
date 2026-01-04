@@ -17,6 +17,7 @@
 <body>
 <header>
 	<a href="./index.html" class="back_btn btn btn-info">戻る</a>
+	<a href="./calendar.html" class="back_btn btn btn-info">カレンダー</a>
 </header>
 <main>
 	<div id="container">
@@ -28,10 +29,11 @@
 					<p>リビング</p>
 					<ul>
 						<li><a class="btn btn-secondary" id="1FLivingRoomDyson" href="javascript:void(0);">Dyson</a></li>
+						<li><a class="btn btn-primary" id="1FLivingRoomAirConditioner" href="javascript:void(0);">エアコン</a></li>
 					</ul>
 				</div>
 				<div class="room room2"><p>玄関</p></div>
-				<div class="room room2"><p>階段</p></div>
+				<div class="room room2"><p>階段・廊下</p></div>
 				<div class="room room2"><p>トイレ</p></div>
 				<div class="room room2"><p>居間</p></div>
 			</div>
@@ -39,7 +41,12 @@
 		<div id="2F">
 			<p class="room_title">2F</p>
 			<div class="room_wrapper">
-				<div class="room room2"><p>仕事部屋</p></div>
+				<div class="room room2">
+					<p>仕事部屋</p>
+					<ul>
+						<li><a class="btn btn-primary" id="2FWorkRoomAirConditioner" href="javascript:void(0);">エアコン</a></li>
+					</ul>
+				</div>
 				<div class="room room1">
 					<p>寝室</p>
 					<ul>
@@ -65,6 +72,25 @@
 			<p><a id="1FLivingRoomDysonClose" class="close btn btn-secondary" href="javascript: void(0);">閉じる</a></p>
 		</div>
 	</div>
+	<div id="1FLivingRoomAirConditionerPopup" class="popup">
+		<div class="content">
+			<ul>
+				<li>
+					<a class="btn btn-primary confirm" href="javascript:void(0);" onclick="confirm('1F リビングのエアコン', 'power_on_dry', 'を除湿27℃で起動します。');">除湿(27℃)</a>
+				</li>
+				<li>
+					<a class="btn btn-primary confirm" href="javascript:void(0);" onclick="confirm('1F リビングのエアコン', 'power_on_heat', 'を暖房21℃で起動します。');">暖房(21℃)</a>
+				</li>
+				<li>
+					<a class="btn btn-primary confirm" href="javascript:void(0);" onclick="confirm('1F リビングのエアコン', 'power_off', 'の電源OFFします。');">電源OFF</a>
+				</li>
+				<li>
+					<a data="1F リビングのエアコン" class="airConCustomize btn btn-primary" data="1F リビングのエアコン" href="javascript:void(0);">カスタム</a>
+				</li>
+			</ul>
+			<p><a id="1FLivingRoomAirConditionerClose" class="close btn btn-secondary" href="javascript: void(0);">閉じる</a></p>
+		</div>
+	</div>
 	<div id="2FBedRoomDysonPopup" class="popup">
 		<div class="content">
 			<ul>
@@ -73,6 +99,25 @@
 				</li>
 			</ul>
 			<p><a id="2FBedRoomDysonClose" class="close btn btn-secondary" href="javascript: void(0);">閉じる</a></p>
+		</div>
+	</div>
+	<div id="2FWorkRoomAirConditionerPopup" class="popup">
+		<div class="content">
+			<ul>
+				<li>
+					<a class="btn btn-primary confirm" href="javascript:void(0);" onclick="confirm('2F 仕事部屋のエアコン', 'power_on_dry', 'を除湿27℃で起動します。');">除湿(27℃)</a>
+				</li>
+				<li>
+					<a class="btn btn-primary confirm" href="javascript:void(0);" onclick="confirm('2F 仕事部屋のエアコン', 'power_on_heat', 'を暖房21℃で起動します。');">暖房(21℃)</a>
+				</li>
+				<li>
+					<a class="btn btn-primary confirm" href="javascript:void(0);" onclick="confirm('2F 仕事部屋のエアコン', 'power_off', 'の電源OFFします。');">電源OFF</a>
+				</li>
+				<li>
+					<a data="2F 寝室のエアコン" class="airConCustomize btn btn-primary" data="2F 仕事部屋のエアコン" href="javascript:void(0);">カスタム</a>
+				</li>
+			</ul>
+			<p><a id="2FWorkRoomAirConditionerClose" class="close btn btn-secondary" href="javascript: void(0);">閉じる</a></p>
 		</div>
 	</div>
 	<div id="2FBedRoomAirConditionerPopup" class="popup">
@@ -85,7 +130,7 @@
 					<a class="btn btn-primary confirm" href="javascript:void(0);" onclick="confirm('2F 寝室のエアコン', 'power_off', 'の電源OFFします。');">電源OFF</a>
 				</li>
 				<li>
-					<a data="2F 寝室のエアコン" class="airConCustomize btn btn-primary" href="javascript:void(0);">カスタム</a>
+					<a data="2F 寝室のエアコン" class="airConCustomize btn btn-primary" data="2F 寝室のエアコン" href="javascript:void(0);">カスタム</a>
 				</li>
 			</ul>
 			<p><a id="2FBedRoomAirConditionerClose" class="close btn btn-secondary" href="javascript: void(0);">閉じる</a></p>
@@ -95,25 +140,36 @@
 		<div class="content">
 			<div id="temperatureCustom" class="customize_area">
 				<a href="javascript:void(0);" onclick="temperature_down();">&lt;</a>
-				<span id="temperature">27</span>
+				<span id="temperature">27℃</span>
 				<a href="javascript:void(0);" onclick="temperature_up();">&gt;</a>
-				<input type="hidden" id="temperatureValue" value="27">
-			</div>
-			<div id="mode" class="customize_area">
-				<p>運転モード</p>
-				<input type="radio" name="mode" id="airConModeAuto" value="1"><label for="airConModeAuto">オート</label>
-				<input type="radio" name="mode" id="airConModeCool" value="2"><label for="airConModeCool">冷房</label>
-				<input type="radio" name="mode" id="airConModeDry" value="3"><label for="airConModeDry">除湿</label>
-				<input type="radio" name="mode" id="airConModeHeat" value="5"><label for="airConModeHeat">暖房</label>
+				<input type="hidden" name="temperatureValue" value="27">
 			</div>
 			<div id="fanSpeed" class="customize_area">
 				<p>送風強さ</p>
-				<input type="radio" name="fan_speed" id="airConFanspeedAuto" value="1"><label for="airConFanspeedAuto">オート</label>
-				<input type="radio" name="fan_speed" id="airConFanspeedLow" value="2"><label for="airConFanspeedLow">弱</label>
-				<input type="radio" name="fan_speed" id="airConFanspeedMedium" value="3"><label for="airConFanspeedMedium">中</label>
-				<input type="radio" name="fan_speed" id="airConFanspeedHigh" value="5"><label for="airConFanspeedHigh">強</label>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="fan_speed" id="airConFanspeedAuto" value="1" checked>
+					<label class="form-check-label" for="airConFanspeedAuto">オート</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="fan_speed" id="airConFanspeedLow" value="2">
+					<label class="form-check-label" for="airConFanspeedLow">弱</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="fan_speed" id="airConFanspeedMedium" value="3">
+					<label class="form-check-label" for="airConFanspeedMedium">中</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="fan_speed" id="airConFanspeedHigh" value="5">
+					<label class="form-check-label" for="airConFanspeedHigh">強</label>
+				</div>
 			</div>
-			<p><a id="airConditionerCustomizeSend" class="close btn btn-primary" href="javascript: void(0);">設定</a></p>
+			<input type="hidden" name="deviceId" value="">
+			<div id="airConSendButton" class="customize_area">
+				<p><a id="airConditionerCustomizeSend" class="btn btn-primary confirm" href="javascript: void(0);" onclick="airConSettingSend(2);">冷房</a></p>
+				<p><a id="airConditionerCustomizeSend" class="btn btn-danger confirm" href="javascript: void(0);" onclick="airConSettingSend(5);">暖房</a></p>
+				<p><a id="airConditionerCustomizeSend" class="btn btn-success confirm" href="javascript: void(0);" onclick="airConSettingSend(3);">除湿</a></p>
+				<p><a id="airConditionerCustomizeOffSend" class="btn btn-warning confirm" href="javascript: void(0);" onclick="airConSettingOffSend();">電源OFF</a></p>
+			</div>
 			<p><a id="airConditionerCustomizePopupClose" class="close btn btn-secondary" href="javascript: void(0);">閉じる</a></p>
 		</div>
 	</div>
@@ -129,6 +185,7 @@
 </main>
 <footer>
 	<a href="./index.html" class="back_btn btn btn-info">戻る</a>
+	<a href="./calendar.html" class="back_btn btn btn-info">カレンダー</a>
 </footer>
 </body>
 </html>
