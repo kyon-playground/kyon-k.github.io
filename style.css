@@ -1,0 +1,290 @@
+* { color: #333;}
+ul, ol { margin: 0; padding: 0;}
+
+header, footer {
+	padding: 0 2.5%;
+}
+header a, footer a {
+	display: block;
+	width: 100%;
+}
+header a {
+	margin-bottom: 1rem;
+}
+footer a {
+	margin-top: 1rem;
+}
+header div {
+	padding: 0.5% 2.5%;
+}
+#controls {
+	background: #eee;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	padding: 20px 10%;
+	position:fixed;
+	transition: all 0.5s;
+}
+
+#menuOpen {
+	background: #0085C9;
+	border-radius: 0 0 5px 5px;
+	color: #fff;
+	padding: 2.5px 15px;
+	position:absolute;
+	left: 200px;
+	top: 0;
+}
+
+
+#container { padding: 0 2.5%;}
+#container:after { content: "";display:block;clear:both;}
+/*
+#left { width: 15%;float:left;}
+
+#left #today {
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+#left ul {
+	list-style: none;
+}
+
+#left ul li {
+	border-bottom: 1px solid #ccc;
+	border-left: 2.5px solid #86612B;
+	margin-bottom: 5px;
+	padding-left: 2.5px;
+}
+
+#left ul li div:last-child {
+	text-align: right;
+}
+#left ul li span.title {
+	display: block;
+	text-align: left;
+}
+#left ul li span.time,
+*/
+#calendar ul li span.time, .schedule .time {
+	background-color: #86612B;
+	border-radius: 5px;
+	color: #fff;
+	display:inline-block;
+	font-size: 10px;
+	margin-left: 2.5px;
+	margin-bottom: 5px;
+	padding: 0 5px;
+}
+
+#calendar ul li span.time.yuka, .schedule .time.yuka {
+	background-color: #84CCFF;
+}
+
+#calendar ul li span.title:before, .schedule .title:before {
+	content: "恭";
+	/*border-left: 3px solid #86612B;*/
+	border-bottom: 1px dotted #86612B;
+	display: inline-block;
+	clear: both;
+	color: #86612B;
+	position: absolute;
+    margin: 0 0 0 -15px;
+    padding: 0;
+}
+
+#calendar ul li span.title.yuka:before, .schedule .title.yuka:before {
+	content: "佑";
+	color: #84CCFF;
+	/*border-color: #84CCFF;*/
+}
+
+#calendar ul li span.title, .schedule .title {
+	margin-top: 5px;
+	position: relative;
+	padding-left: 15px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+
+
+/*#right { width: 80%;float:right;}*/
+
+#calendarWrapper {
+	overflow-x: scroll;
+	width: 100%;
+}
+#calendar { width: 185vw; }
+.calendars { float: left; width: 47.5%;margin-right: 2.5%; }
+.calendars:last-child { margin-right: 0; }
+
+#date {font-size: 20px;}
+.weeks div { width: 15%; text-align:center;padding: 2.5px 0 }
+.weeks, .days { display: flex; border-bottom: 1px dotted #ccc; justify-content: space-between;}
+.month .days:last-child { border-bottom: none;}
+.days > div { width: 15%; padding: 2.5px 5px 2.5px 0; }
+.days > div:nth-child(2n) { background-color: rgba(240, 240, 240, 0.2); }
+td { display: inline-block;}
+
+.scheduleLink {
+	display: block;
+	font-size: 16px;
+}
+
+.weeks div:first-child {
+	background-color:#FFCCCC;
+}
+.weeks div:last-child {
+	background-color:#CCEEFF;
+}
+.weeks > div:first-child, .days > div:first-child, .days > .date:first-child span {
+	color: red;
+}
+
+.weeks > div:last-child, .days > div:last-child, .days > .date:last-child span {
+	color: royalblue;
+}
+
+#calendar .date > span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	width:20px;
+	height:20px;
+	position: relative;
+	left: 5px;
+}
+#calendar .today {
+	background: #fff0f5;
+}
+#calendar .date > span {
+	background-color: #BBB;
+	color: #fff;
+}
+#calendar .today > span {
+	background-color: #F00;
+	color: #fff;
+}
+#calendar .tomorrow {
+	background: #FFF6FB;
+}
+/*
+#calendar .tomorrow > span {
+	background-color: #F00;
+	color: #fff;
+}
+*/
+
+#calendar .holiday {
+	color: #f00;
+}
+#calendar .holiday ul li {
+	/*color: #f00;*/
+}
+
+#calendar ul, .schedule ul {
+	list-style: none;
+	margin-left: -20px;
+}
+#calendar ul li, .schedule ul li {
+	text-align: right;
+	border-bottom: 1px dotted #ccc;
+}
+#calendar ul li:last-child, .schedule ul li span:last-child {
+	border: none;
+}
+#calendar ul li span:first-child, .schedule ul li span:first-child {
+	display: block;
+	text-align: left;
+}
+#calendar ul li span:last-child {
+}
+
+.message {
+	margin-left: 50px;
+	margin-top: -1.5rem;
+	min-height: 50px;
+	font-size: 12px;
+}
+	
+.popup {
+	display: none;
+	height: 100vh;
+	width: 100%;
+	background: black;
+	opacity: 0.95;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.loading {
+	display: none;
+	height: 100vh;
+	width: 100%;
+	background: black;
+	opacity: 0.9;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.loading .content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.schedule {
+	display: none;
+	background: rgba(255, 255, 255, 0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	inset: 0;
+}
+.schedule.show {
+	display: flex;
+	align-items: center;
+}
+.schedule .content {
+	background: #fff;
+	border-radius: 20px;
+	display: flex;
+	border: 1px solid #ccc;
+	position: fixed;
+	margin: auto;
+	min-width: 300px;
+}
+.schedule .content > div {
+	min-width: 300px;
+}
+.schedule ul {
+	margin: 0;
+	max-height: 200px;
+	overflow-y: scroll;
+}
+.schedule .content a {
+	position: absolute;
+	bottom: 0;
+	color: #333;
+	left: 0;
+}
+.schedule .content a:hover {
+	text-decoration: none;
+}
+
+.content {
+	padding: 30px;
+	opacity: 1;
+	text-align: center;
+}
+.show {
+	display: flex;
+	justify-content: center;
+}
